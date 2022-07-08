@@ -47,13 +47,14 @@ console.log(formattedDate)
           }
           console.log(updatedExercise)
   return (
-        <div className="bg-gray-50 overflow-hidden rounded-lg" style ={{marginLeft:'275px'}}>
-        <div className="p-10 w-28 "> 
+    
+        <>
       {/* <img class="w-full" src="/mountain.jpg" alt="Mountain"/> */}
       {!completeWorkout ? 
       
-      <div class="px-6 py-4" >
-        <div class="font-bold text-xl mb-2">{formattedDate}</div>
+      
+      <div className="rounded-sm mx-64 bg-gray-200 w-96 "> 
+        <div class="font-bold text-xl text-center mb-2">{formattedDate}</div>
         <p class="text-white-700 text-center">
         Exercise Name: {exercise.exercise_name}
         </p>
@@ -63,6 +64,7 @@ console.log(formattedDate)
         <br></br>
         {/* <iframe style={{marginLeft: '30px'}} width="300" height="300" src={exercise.youtube_url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
         <ReactPlayer
+        className="mx20"
         width="300px" 
         height="300px"
         url={exercise.youtube_url}
@@ -73,15 +75,15 @@ console.log(formattedDate)
         <button
         onClick={handleUpdateButton}
         type="button"
-        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 mx-20 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         Update Results
       </button>
-       
       </div>
+      
 : 
         
-    <div class="px-6 py-4 text-center" >
+<div className="rounded-md mx-64 bg-gray-50 w-28 "> 
         <form onSubmit={handleExercisePatch} className="text-center">
         <div class="font-bold text-xl mb-2">{formattedDate}</div>
         <p class="text-white-700 text-base">
@@ -99,7 +101,7 @@ console.log(formattedDate)
         <br></br>
         <div>
         
-      <label htmlFor="results" className="block text-sm font-medium text-gray-700">
+      <label htmlFor="results" className="text-md font-medium text-gray-700">
         Input Results
       </label>
       <div className="mt-1">
@@ -109,7 +111,7 @@ console.log(formattedDate)
           type="text"
           name="results"
           id="results"
-          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full lg:text-lg border-gray-300 rounded-lg"
+          className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 text-lg w-60 border-gray-900 rounded-lg"
           placeholder="Example (15,14,13 @ 80lb) "
         />
       </div>
@@ -133,11 +135,10 @@ console.log(formattedDate)
       </button>
         </p>
         </form>
-      </div>
+    </div>
       
       }
-    </div>
-  </div>
+   </>
 
 
   )

@@ -20,9 +20,11 @@ function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExe
   return (
     <>
       <h3 className="text-lg leading-6 mx-64 font-medium text-gray-900">Workouts</h3>
-    <ul className="grid grid-rows-3 grid-flow-col gap-4 px-10">
+      <div className="w-10/12 ml-56 mr-px">
+    <ul className="grid grid-rows-2 grid-flow-col gap-0 w-40 space-x-0 space-y-2">
     {exerciseMapper()}
     </ul>
+    </div>
     </>
   )
 }
