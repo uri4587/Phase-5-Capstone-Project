@@ -64,7 +64,7 @@ console.log(formattedDate)
         <br></br>
         {/* <iframe style={{marginLeft: '30px'}} width="300" height="300" src={exercise.youtube_url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
         <ReactPlayer
-        className="mx20"
+        style={{marginLeft: '45px'}}
         width="300px" 
         height="300px"
         url={exercise.youtube_url}
@@ -75,7 +75,7 @@ console.log(formattedDate)
         <button
         onClick={handleUpdateButton}
         type="button"
-        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 mx-20 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 my-5 mx-36 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         Update Results
       </button>
@@ -83,27 +83,27 @@ console.log(formattedDate)
       
 : 
         
-<div className="rounded-md mx-64 bg-gray-50 w-28 "> 
+    <div className="rounded-sm h-1/2 mx-64 bg-gray-200 w-96 "> 
         <form onSubmit={handleExercisePatch} className="text-center">
         <div class="font-bold text-xl mb-2">{formattedDate}</div>
         <p class="text-white-700 text-base">
         Exercise Name: {exercise.exercise_name}
         <br></br>
+        <br></br>
         Instruction: {exercise.instructions}
-        <br></br>
-        <br></br>
-        {/* <iframe style={{marginLeft: '30px'}} width="300" height="300" src="https://www.youtube.com/embed/MyQVLFBwlJ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-        <ReactPlayer
+        {/* <ReactPlayer
         width="300px" 
         height="300px"
         url={exercise.youtube_url}
-      />
+      /> */}
+        <br></br>
         <br></br>
         <div>
-        
       <label htmlFor="results" className="text-md font-medium text-gray-700">
         Input Results
       </label>
+      <br></br>
+      <br></br>
       <div className="mt-1">
         <input
         onChange={handleResultsCompletedChange}
