@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_18_170739) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_10_183911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_170739) do
     t.index ["day_id"], name: "index_meals_on_day_id"
   end
 
+  create_table "message_threads", force: :cascade do |t|
+    t.boolean "approved"
+    t.bigint "trainee_id", null: false
+    t.bigint "trainer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trainee_id"], name: "index_message_threads_on_trainee_id"
+    t.index ["trainer_id"], name: "index_message_threads_on_trainer_id"
+  end
+
   create_table "trainees", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -85,6 +95,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_170739) do
   add_foreign_key "days", "trainees"
   add_foreign_key "exercises", "workouts"
   add_foreign_key "meals", "days"
+  add_foreign_key "message_threads", "trainees"
+  add_foreign_key "message_threads", "trainers"
   add_foreign_key "workouts", "days"
   add_foreign_key "workouts", "trainers"
 end

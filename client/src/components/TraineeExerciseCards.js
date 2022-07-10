@@ -2,13 +2,14 @@ import {useState} from 'react';
 import dateFormat from "dateformat";
 import ReactPlayer from "react-player";
 
-function TraineeExerciseCards({exercise, traineeExercises, setTraineeExercises}) {
+function TraineeExerciseCards({exercise, traineeExercises, setTraineeExercises, handleDropdownToggle}) {
     const [completeWorkout, setCompleteWorkout] = useState(false)
     const [updatedExercise, setUpdatedExercise] = useState({results: "", completed: false})
     const [newExercise, setNewExercise] = useState(exercise)
-console.log(exercise.exercises_date_of_day)
+    const [isWorkoutCompleted, setIsWorkoutCompleted] = useState(false)
+console.log(exercise)
 
-const formattedDate = dateFormat(exercise.exercises_date_of_day, "dddd, mmmm d, yyyy")
+const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).replaceAll('-', '/'), "dddd mmmm d, yyyy")
 console.log(formattedDate)
     const handleCancelButton = () => {
         setCompleteWorkout(!completeWorkout)
@@ -52,8 +53,18 @@ console.log(formattedDate)
       {/* <img class="w-full" src="/mountain.jpg" alt="Mountain"/> */}
       {!completeWorkout ? 
       
-      
+      <li className="grid grid-cols-4 gap-4" onClick={handleDropdownToggle}>
       <div className="rounded-sm mx-64 bg-gray-200 w-96 "> 
+      {exercise.completed
+      ? 
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" stroke="green" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      :
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" stroke="red" strokeLinejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      }
         <div class="font-bold text-xl text-center mb-2">{formattedDate}</div>
         <p class="text-white-700 text-center">
         Exercise Name: {exercise.exercise_name}
@@ -80,6 +91,7 @@ console.log(formattedDate)
         Update Results
       </button>
       </div>
+      </li>
       
 : 
         

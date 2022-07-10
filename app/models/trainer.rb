@@ -2,6 +2,8 @@ class Trainer < ApplicationRecord
     has_secure_password
     has_many :workouts 
     has_many :days, through: :workouts
+    has_many :message_threads  
+    has_many :trainees, through: :message_threads
     
     
     validates :first_name, presence: true

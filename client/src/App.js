@@ -7,6 +7,7 @@ import Nav from './components/Nav'
 import Signup from './components/Signup'
 import WorkoutsTrainee from './components/WorkoutsTrainee'
 import MealsTrainee from './components/MealsTrainee'
+import NewHomeTrainee from "./components/NewHomeTrainee";
 
 function App() {
 const [isLogin, setIsLogin] = useState(false)
@@ -70,7 +71,7 @@ useEffect(fetchCurrentUser, [])
     {/* <Workouts/> */}
     <Routes>
       <Route path="/" element={<Login setIsLogin={setIsLogin} setCurrentUserTrainee={setCurrentUserTrainee} setCurrentUserTrainer={setCurrentUserTrainer} />} />
-      <Route path="/trainee-home" element={<HomeTrainee currentUserTrainee={currentUserTrainee} />} />
+      <Route path="/trainee-home" element={<NewHomeTrainee currentUserTrainee={currentUserTrainee} />} />
       <Route path="/trainer-home" element={<HomeTrainer currentUserTrainer={currentUserTrainer} />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/workouts-trainee" element={<WorkoutsTrainee currentUserTrainee={currentUserTrainee} traineeDays={traineeDays} traineeWorkouts={traineeWorkouts} traineeExercises={traineeExercises} setTraineeExercises={setTraineeExercises}/>} />

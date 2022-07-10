@@ -1,6 +1,8 @@
 class Trainee < ApplicationRecord
     has_secure_password
     has_many :days, dependent: :destroy
+    has_many :message_threads
+    has_many :trainers, through: :message_threads
 
     validates :first_name, presence: true
     validates :last_name, presence: true

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :message_threads
   resources :exercises
   resources :workouts, except: [:update]
   resources :trainers
