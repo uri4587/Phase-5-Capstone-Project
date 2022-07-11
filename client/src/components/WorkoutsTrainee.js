@@ -3,67 +3,55 @@ import TraineeExerciseCards from './TraineeExerciseCards'
 import dateFormat from "dateformat";
 
 function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExercises}) {
-  const [dropdownToggle, setDropdownToggle] = useState(false)
   const [dateSelect, setDateSelect] = useState("")
-  
-  console.log(traineeExercises)
+  // console.log(dateSelect)
+  // console.log(traineeExercises)
 
   const dateDropdown = () => traineeDays.map((day) => {
     // console.log(day.date_of_day)
   })
-dateDropdown()
+  console.log(traineeExercises.exercises_date_of_day)
   const daysMapper = () => traineeDays.map((day) => {
     const newDate = day.date_of_day.slice(0, 10).replaceAll('-', '/')
     // console.log(newDate)
-    return <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{dateFormat(newDate , "dddd, mmmm d, yyyy ")}</a>
+    return <a href="#" value={newDate} class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{dateFormat(newDate , "dddd, mmmm d, yyyy ")}</a>
   })
 
-  daysMapper()
-
-  const exerciseMapper = () => traineeExercises.map((exercise) =>{
-    return <TraineeExerciseCards key={exercise.id} exercise={exercise} handleDropdownToggle={handleDropdownToggle} traineeExercises={traineeExercises} setTraineeExercises={setTraineeExercises}/>
+  const selectMapper = () => traineeDays.map((day) => {
+    const newDate = day.date_of_day.slice(0, 10).replaceAll('-', '/')
+    // console.log(newDate)
+    return <option value={newDate}>{dateFormat(newDate , "dddd, mmmm d, yyyy ")}</option>
+  })
+  let filteredDateResults = traineeExercises.filter((eachExercise) => {
+    const reformattedDate = eachExercise.exercises_date_of_day.slice(0, 10).replaceAll('-', '/')
+    if(reformattedDate.includes(dateSelect))
+      return traineeExercises
   })
 
-  const handleDropdownToggle = (e) => {
+  const exerciseMapper = () => filteredDateResults.map((exercise) =>{
+    return <TraineeExerciseCards key={exercise.id} exercise={exercise} traineeExercises={traineeExercises} setTraineeExercises={setTraineeExercises}/>
+  })
+
+  
+  
+  const handleDateSelect = (e) => {
     console.log(e.target.value)
-    setDropdownToggle(!dropdownToggle)
+    setDateSelect(e.target.value)
+    
   }
+  
 
-  const handleDropdownFilter = () => {
-
-  }
   // const newDate = dateComplete.replaceAll('-', '/')
   return (
     <>
-      <h3 className="text-lg leading-6 mx-64 font-medium text-gray-900" onClick={handleDropdownToggle}>Workouts</h3>
+      <h3 className="text-lg leading-6 mx-64 font-medium text-gray-900">Workouts</h3>
       <div class="relative inline-block text-left">
-        <div>
-          <button 
-            onClick={handleDropdownToggle}
-            type="button" 
-            class="inline-flex justify-center w-1/3 mx-56 pointer-events-auto rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-indigo-600 text-sm font-medium text-white hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" 
-            id="menu-button" 
-            aria-expanded="true" 
-            aria-haspopup="true">
-              Select Date
-            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </button>
-        </div>
-
-  {dropdownToggle ?  <div class="origin-top-right absolute right-0 mt-0 mx-32 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-    <div class="py-1" role="none">
-      {/* <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
-      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
-      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a> */}
-      {daysMapper()}
-    </div>
-  </div>
-
-:
-null}
-</div>
+        <label for="countries" class="block mb-2 mx-64 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
+        <select onChange={handleDateSelect}id="countries" class="bg-gray-50 mx-64 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected>Choose Date</option>
+          {selectMapper()}
+        </select>
+      </div>
  
   
       <div className="w-10/12 ml-56 mr-px">

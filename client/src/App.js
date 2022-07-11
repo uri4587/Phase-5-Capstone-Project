@@ -43,6 +43,14 @@ const fetchCurrentUser = () => {
             setTraineeMeals(data.trainee_serialized_info.trainee_days_meals)
           })
         }
+      else {
+        const currentUserTrainerId = user.id
+          fetch(`/trainers/${currentUserTrainerId}`)
+          .then(resp => resp.json())
+          .then(data => {
+            console.log(data)
+          })
+      }
       })
     }
   })

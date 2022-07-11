@@ -85,7 +85,7 @@ function HomeTrainer({currentUserTrainer}) {
     <>
     
           
-        <main className="-mt-24 pb-8" style={{marginLeft: '250px', marginTop: '-800px'}}>
+        <main className="-mt-24 pb-8">
         <div className="min-h-full" >
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {/* Main 3 column grid */}
