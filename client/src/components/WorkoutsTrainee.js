@@ -4,16 +4,17 @@ import dateFormat from "dateformat";
 
 function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExercises}) {
   const [dropdownToggle, setDropdownToggle] = useState(false)
+  const [dateSelect, setDateSelect] = useState("")
   
   console.log(traineeExercises)
 
   const dateDropdown = () => traineeDays.map((day) => {
-    console.log(day.date_of_day)
+    // console.log(day.date_of_day)
   })
 dateDropdown()
   const daysMapper = () => traineeDays.map((day) => {
     const newDate = day.date_of_day.slice(0, 10).replaceAll('-', '/')
-    console.log(newDate)
+    // console.log(newDate)
     return <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{dateFormat(newDate , "dddd, mmmm d, yyyy ")}</a>
   })
 
@@ -23,7 +24,8 @@ dateDropdown()
     return <TraineeExerciseCards key={exercise.id} exercise={exercise} handleDropdownToggle={handleDropdownToggle} traineeExercises={traineeExercises} setTraineeExercises={setTraineeExercises}/>
   })
 
-  const handleDropdownToggle = () => {
+  const handleDropdownToggle = (e) => {
+    console.log(e.target.value)
     setDropdownToggle(!dropdownToggle)
   }
 

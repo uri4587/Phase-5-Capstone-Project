@@ -7,10 +7,10 @@ function TraineeExerciseCards({exercise, traineeExercises, setTraineeExercises, 
     const [updatedExercise, setUpdatedExercise] = useState({results: "", completed: false})
     const [newExercise, setNewExercise] = useState(exercise)
     const [isWorkoutCompleted, setIsWorkoutCompleted] = useState(false)
-console.log(exercise)
+// console.log(exercise)
 
 const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).replaceAll('-', '/'), "dddd mmmm d, yyyy")
-console.log(formattedDate)
+// console.log(formattedDate)
     const handleCancelButton = () => {
         setCompleteWorkout(!completeWorkout)
     }
@@ -26,7 +26,7 @@ console.log(formattedDate)
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(updatedExercise)})
             .then(resp => resp.json())
-            .then(updatedExercise => {console.log(updatedExercise)
+            .then(updatedExercise => {
             const updateExerciseToMap = traineeExercises.map((eachExercise)=> {
                 if(eachExercise.id == updatedExercise.id) {
                         return updatedExercise
@@ -38,7 +38,7 @@ console.log(formattedDate)
               setCompleteWorkout(false)
               setTraineeExercises(updateExerciseToMap)
               setNewExercise(updatedExercise)
-              console.log("HELLO WORLD")
+              // console.log("HELLO WORLD")
               
           })}
 
@@ -46,7 +46,7 @@ console.log(formattedDate)
               setUpdatedExercise({...updatedExercise, results: e.target.value, completed: true})
               
           }
-          console.log(updatedExercise)
+          // console.log(updatedExercise)
   return (
     
         <>
