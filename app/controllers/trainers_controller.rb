@@ -6,7 +6,7 @@ class TrainersController < ApplicationController
 
     def show
         trainer = Trainer.find(params[:id])
-        render json: trainer, status: :ok
+        render json: trainer, status: :ok, serializer: GetTrainerDaysSerializer
     end
 
     def create  

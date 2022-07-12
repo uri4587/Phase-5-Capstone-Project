@@ -7,16 +7,8 @@ function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExe
   // console.log(dateSelect)
   // console.log(traineeExercises)
 
-  const dateDropdown = () => traineeDays.map((day) => {
-    // console.log(day.date_of_day)
-  })
   console.log(traineeExercises.exercises_date_of_day)
-  const daysMapper = () => traineeDays.map((day) => {
-    const newDate = day.date_of_day.slice(0, 10).replaceAll('-', '/')
-    // console.log(newDate)
-    return <a href="#" value={newDate} class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{dateFormat(newDate , "dddd, mmmm d, yyyy ")}</a>
-  })
-
+  
   const selectMapper = () => traineeDays.map((day) => {
     const newDate = day.date_of_day.slice(0, 10).replaceAll('-', '/')
     // console.log(newDate)
@@ -40,7 +32,7 @@ function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExe
     
   }
   
-
+console.log(dateSelect)
   // const newDate = dateComplete.replaceAll('-', '/')
   return (
     <>
@@ -48,7 +40,7 @@ function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExe
       <div class="relative inline-block text-left">
         <label for="countries" class="block mb-2 mx-64 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
         <select onChange={handleDateSelect}id="countries" class="bg-gray-50 mx-64 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option selected>Choose Date</option>
+          <option value={""} selected>Choose Date</option>
           {selectMapper()}
         </select>
       </div>

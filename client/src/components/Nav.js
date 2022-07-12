@@ -3,11 +3,12 @@ import {useNavigate} from 'react-router-dom'
 
 
   
-  export default function Nav({currentUserTrainee, setCurrentUserTrainee, setIsLogin}) {
+  export default function Nav({currentUserTrainee, setCurrentUserTrainee, setIsLogin, currentUserTrainer}) {
+    console.log(currentUserTrainee)
       const navigate = useNavigate()
-
+    const href = currentUserTrainee ? '/trainee-home' : '/trainer-home'
     const navigation = [
-        { name: 'Dashboard', icon: HomeIcon, href: '/trainee-home', current: true },
+        { name: 'Dashboard', icon: HomeIcon, href: href, current: true },
         { name: 'Meal Tracker', icon: UsersIcon, href: '', count: 3, current: false },
         { name: 'Workouts', icon: FolderIcon, href: '/workouts', count: 4, current: false },
         { name: 'Messages', icon: CalendarIcon, href: '#', current: false },
@@ -31,7 +32,7 @@ import {useNavigate} from 'react-router-dom'
     return (
     <>
         {/* <aside class="w-64" aria-label="Sidebar"> */}
-      <div className="fixed max-w-fit h-screen bg-indigo-700">
+      <div className="fixed flex-none w-fit h-screen bg-indigo-700">
         <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
           <div className="flex items-center flex-shrink-0 px-4">
             <img
@@ -58,8 +59,8 @@ import {useNavigate} from 'react-router-dom'
             ))}
           </nav>
         </div>
-        <div className="flex-shrink-0 mt-96 flex border-t border-indigo-800 p-4">
-          <a href="#" className="flex-shrink-0 w-full group block">
+        <div className="shrink mt-52 border-t border-indigo-800 p-4">
+          <a href="#" className="shrink w-full group block">
             <div className="flex items-center">
               <div>
                 <img
@@ -69,7 +70,7 @@ import {useNavigate} from 'react-router-dom'
                 />
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-white">{currentUserTrainee.first_name}</p>
+                {currentUserTrainee ? <p className="text-sm font-medium text-white">{currentUserTrainee.first_name + ' ' + currentUserTrainee.last_name}</p> : <p className="text-sm font-medium text-white">{currentUserTrainer.first_name + ' ' + currentUserTrainer.last_name}</p>}
                 <p className="text-xs font-medium text-indigo-200 group-hover:text-white">View profile</p>
             </div>
             <svg onClick={handleLogOut}xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} style={{marginLeft: '50px'}}>

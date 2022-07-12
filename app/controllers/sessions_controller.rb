@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     end
 
     def login_trainer
-        trainer = Trainer.find_by_username(username: params[:username])
+        trainer = Trainer.find_by(username: params[:username])
 
         if trainer&.authenticate(params[:password])
             session[:trainer_id] = trainer.id

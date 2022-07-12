@@ -27,6 +27,7 @@ trainer_for_trainee1 = Trainer.create(first_name: "Joe", last_name: "Smith", use
 workout_for_trainee1 = Workout.create(day_id: day_for_trainee1.id, trainer_id: trainer_for_trainee1.id)
 workout2_for_trainee1 = Workout.create(day_id: day_for_trainee1_2.id, trainer_id: trainer_for_trainee1.id)
 
+message_thread1 = MessageThread.create(approved: true, trainee_id: trainee1.id, trainer_id: trainer_for_trainee1.id)
 
 exercise1_for_workout1 = Exercise.create(exercise_name: "Lat Pull Down", instructions: "3 sets, 8-15 reps, 3 RIR", workout_id: workout_for_trainee1.id, youtube_url: "https://www.youtube.com/watch?v=MyQVLFBwlJ8")
 exercise2_for_workout1 = Exercise.create(exercise_name: "Barbell Bent Over Rows", instructions: "4 sets, 10-20 reps, 3 RIR", workout_id: workout_for_trainee1.id, youtube_url: "https://www.youtube.com/watch?v=6FZHJGzMFEc")
