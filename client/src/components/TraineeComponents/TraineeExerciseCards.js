@@ -6,7 +6,7 @@ function TraineeExerciseCards({exercise, traineeExercises, setTraineeExercises, 
     const [completeWorkout, setCompleteWorkout] = useState(false)
     const [updatedExercise, setUpdatedExercise] = useState({results: "", completed: false})
     const [newExercise, setNewExercise] = useState(exercise)
-    const [isWorkoutCompleted, setIsWorkoutCompleted] = useState(false)
+
 // console.log(exercise)
 
 const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).replaceAll('-', '/'), "dddd mmmm d, yyyy")
@@ -18,7 +18,7 @@ const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).rep
         setCompleteWorkout(!completeWorkout)
     }
     const handleExercisePatch = (e) => {
-        e.preventDefault();
+       
 
             const id = exercise.id
             fetch(`/exercises/${id}`,
@@ -43,6 +43,7 @@ const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).rep
           })}
 
           const handleResultsCompletedChange = (e) => {
+            console.log(e.target.value)
               setUpdatedExercise({...updatedExercise, results: e.target.value, completed: true})
               
           }
@@ -94,8 +95,8 @@ const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).rep
       </li>
       
 : 
-        
-    <div className="rounded-sm h-1/2 mx-64 bg-gray-200 w-96 "> 
+<li className="grid grid-cols-4 gap-4" onClick={handleDropdownToggle}>
+    <div className="rounded-sm h-80 mx-64 bg-gray-200 w-96 "> 
         <form onSubmit={handleExercisePatch} className="text-center">
         <div class="font-bold text-xl mb-2">{formattedDate}</div>
         <p class="text-white-700 text-base">
@@ -148,7 +149,7 @@ const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).rep
         </p>
         </form>
     </div>
-      
+      </li>
       }
    </>
 

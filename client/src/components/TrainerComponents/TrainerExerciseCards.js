@@ -94,8 +94,8 @@ const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).rep
       </li>
       
 : 
-        
-    <div className="rounded-sm h-1/2 mx-64 bg-gray-200 w-96 "> 
+<li className="grid grid-cols-4 gap-4" onClick={handleDropdownToggle}>
+    <div className="rounded-sm h-80 mx-64 bg-gray-200 w-96 "> 
         <form onSubmit={handleExercisePatch} className="text-center">
         <div class="font-bold text-xl mb-2">{formattedDate}</div>
         <p class="text-white-700 text-base">
@@ -148,7 +148,7 @@ const formattedDate = dateFormat(exercise.exercises_date_of_day.slice(0, 10).rep
         </p>
         </form>
     </div>
-      
+      </li>
       }
    </>
 

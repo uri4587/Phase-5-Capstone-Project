@@ -52,11 +52,11 @@ const fetchCurrentUser = () => {
           fetch(`/trainers/${currentUserTrainerId}`)
           .then(resp => resp.json())
           .then(data => {
-            // console.log(data)
+            console.log(data.trainer_serialized_info)
             setTrainerDays(data.trainer_serialized_info.trainer_days)
             setTrainerExercises(data.trainer_serialized_info.trainer_exercises)
-            setTrainerMeals(data.trainee_serialized_info.meals)
-            setTrainersClients(data.trainee_serialized_info.trainer_trainees)
+            setTrainerMeals(data.trainer_serialized_info.meals)
+            setTrainersClients(data.trainer_serialized_info.trainers_clients)
             setTrainerWorkouts(data.trainer_serialized_info.workouts)
           })
       }
@@ -64,9 +64,10 @@ const fetchCurrentUser = () => {
     }
   })
 }
-
+  
 useEffect(fetchCurrentUser, [])
 
+console.log(trainersClients)
 
   return (
     <>

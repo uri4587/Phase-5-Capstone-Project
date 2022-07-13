@@ -6,13 +6,13 @@ function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExe
   const [dateSelect, setDateSelect] = useState("")
   // console.log(dateSelect)
   // console.log(traineeExercises)
-
-  console.log(traineeExercises.exercises_date_of_day)
+  
+  
   
   const selectMapper = () => traineeDays.map((day) => {
     const newDate = day.date_of_day.slice(0, 10).replaceAll('-', '/')
     // console.log(newDate)
-    return <option value={newDate}>{dateFormat(newDate , "dddd, mmmm d, yyyy ")}</option>
+    return <option key={day.id} value={newDate}>{dateFormat(newDate , "dddd, mmmm d, yyyy ")}</option>
   })
   let filteredDateResults = traineeExercises.filter((eachExercise) => {
     const reformattedDate = eachExercise.exercises_date_of_day.slice(0, 10).replaceAll('-', '/')
@@ -24,8 +24,6 @@ function Workouts({traineeDays, traineeWorkouts, traineeExercises, setTraineeExe
     return <TraineeExerciseCards key={exercise.id} exercise={exercise} traineeExercises={traineeExercises} setTraineeExercises={setTraineeExercises}/>
   })
 
-  
-  
   const handleDateSelect = (e) => {
     console.log(e.target.value)
     setDateSelect(e.target.value)
